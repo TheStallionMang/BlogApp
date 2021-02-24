@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BlogApp.Models;
 
 namespace BlogApp.Data
 {
@@ -12,5 +13,6 @@ namespace BlogApp.Data
             : base(options)
         {
         }
+        public DbSet<BlogApp.Models.BlogPost> BlogPost { get; set; }
     }
 }
