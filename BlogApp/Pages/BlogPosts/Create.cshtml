@@ -25,19 +25,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="BlogPost.Content" class="control-label"></label>
-                <input asp-for="BlogPost.Content" class="form-control" />
+                <textarea asp-for="BlogPost.Content" class="form-control" rows="6"></textarea>
                 <span asp-validation-for="BlogPost.Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BlogPost.DatePosted" class="control-label"></label>
-                <input asp-for="BlogPost.DatePosted" class="form-control" />
-                <span asp-validation-for="BlogPost.DatePosted" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BlogPost.LastUpdated" class="control-label"></label>
-                <input asp-for="BlogPost.LastUpdated" class="form-control" />
-                <span asp-validation-for="BlogPost.LastUpdated" class="text-danger"></span>
-            </div>
+            <!--
+    <div class="form-group">
+        <label asp-for="BlogPost.DatePosted" class="control-label"></label>
+        <input asp-for="BlogPost.DatePosted" class="form-control" />
+        <span asp-validation-for="BlogPost.DatePosted" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BlogPost.LastUpdated" class="control-label"></label>
+        <input asp-for="BlogPost.LastUpdated" class="form-control" />
+        <span asp-validation-for="BlogPost.LastUpdated" class="text-danger"></span>
+    </div>
+        -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
