@@ -7,20 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using BlogApp.Data;
 using BlogApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BlogApp.Pages.BlogPosts
 {
     public class CreateModel : PageModel
     {
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly BlogApp.Data.ApplicationDbContext _context;
 
-        public CreateModel(BlogApp.Data.ApplicationDbContext context)
+        public CreateModel(BlogApp.Data.ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
         public IActionResult OnGet()
         {
+            //ViewBag.userid = _userManager.GetUserId(HttpContext.User);
             return Page();
         }
 
@@ -34,6 +38,7 @@ namespace BlogApp.Pages.BlogPosts
                 return Page();
             }
 
+            BlogPost.AuthorFK = _userManager.GetUserId(HttpContext.User);
             _context.BlogPost.Add(BlogPost);
             await _context.SaveChangesAsync();
 
