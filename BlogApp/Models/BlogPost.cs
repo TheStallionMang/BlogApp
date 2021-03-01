@@ -11,7 +11,6 @@ namespace BlogApp.Models
 {
     public class BlogPost
     {
-        //private readonly UserManager<ApplicationUser> _userManager;
         public int Id { get; set; }
         public string AuthorFK { get; set; }
         public string Title { get; set; }
@@ -23,10 +22,6 @@ namespace BlogApp.Models
 
         public BlogPost()
         {
-            //_userManager = userManager;
-            //this.AuthorFK = _userManager.GetUserId(HttpContext.User);
-            //var userId = hca.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //AuthorFK = User.Name;
             DatePosted = DateTime.UtcNow;
             LastUpdated = DatePosted;
         }

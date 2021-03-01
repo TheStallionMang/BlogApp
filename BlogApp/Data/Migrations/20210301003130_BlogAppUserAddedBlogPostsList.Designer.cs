@@ -4,14 +4,16 @@ using BlogApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlogApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210301003130_BlogAppUserAddedBlogPostsList")]
+    partial class BlogAppUserAddedBlogPostsList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,6 +44,8 @@ namespace BlogApp.Data.Migrations
 
                     b.Property<string>("AuthorFK");
 
+                    b.Property<int?>("BlogAppUserId");
+
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("DatePosted");
@@ -51,6 +55,8 @@ namespace BlogApp.Data.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BlogAppUserId");
 
                     b.ToTable("BlogPost");
                 });
@@ -218,6 +224,13 @@ namespace BlogApp.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BlogApp.Models.BlogPost", b =>
+                {
+                    b.HasOne("BlogApp.Models.BlogAppUser")
+                        .WithMany("BlogPosts")
+                        .HasForeignKey("BlogAppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

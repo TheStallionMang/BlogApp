@@ -14,5 +14,6 @@ namespace BlogApp.Data
         {
         }
         public DbSet<BlogApp.Models.BlogPost> BlogPost { get; set; }
+        public DbSet<BlogApp.Models.BlogAppUser> BlogAppUser { get; set; }
     }
 }

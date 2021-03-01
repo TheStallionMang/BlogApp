@@ -1,0 +1,22 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@using BlogApp.Models
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model BlogApp.Pages.BlogModel
+@{
+}
+
+<div>
+    @foreach (var bp in Model.BlogPost)
+    {
+        @if (bp.AuthorFK == UserManager.GetUserId(User))
+        {
+            <div>
+                <p>
+                    @bp.Title
+                </p>
+            </div>
+        }
+  }
+</div>
