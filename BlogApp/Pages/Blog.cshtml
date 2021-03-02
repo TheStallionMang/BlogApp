@@ -6,27 +6,33 @@
 @model BlogApp.Pages.BlogModel
 @{
 }
-
-<div>
-    @foreach (var bp in Model.BlogPost)
-    {
-        @if (bp.AuthorFK == UserManager.GetUserId(User))
-        {
-    <div>
-        <h1 class="display-4">@bp.Title</h1>
-        <small>@bp.DatePosted</small>
-        <div>
-            @if (!string.IsNullOrWhiteSpace(bp.Content))
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var bp in Model.BlogPost)
             {
-                var lines = bp.Content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var line in lines)
+                @if (bp.AuthorFK == UserManager.GetUserId(User))
                 {
-                    <p class="lead">@line</p>
+                    <div>
+                        <h1 class="display-4">@bp.Title</h1>
+                        <small>@bp.DatePosted</small>
+                        <div>
+                            @if (!string.IsNullOrWhiteSpace(bp.Content))
+                            {
+                                var lines = bp.Content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                                foreach (var line in lines)
+                                {
+                                    <p class="lead">@line</p>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <br />
                 }
             }
         </div>
+        <div class="col-md-4">
+            <p class="lead">@User.Identity.Name</p>
+        </div>
     </div>
-            <br />
-        }
-  }
 </div>
