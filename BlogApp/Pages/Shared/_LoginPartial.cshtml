@@ -10,7 +10,7 @@
             <a class="nav-link text-dark" asp-area="" asp-page="BlogPosts/Create" title="Manage">Make a post!</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="Blog" title="Manage">Lookup at your blog!</a>
+            <a class="nav-link text-dark" asp-area="" asp-page="Blog" asp-route-id="@User.Identity.Name" title="Manage">Look at your blog!</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>

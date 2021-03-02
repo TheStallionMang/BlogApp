@@ -12,11 +12,21 @@
     {
         @if (bp.AuthorFK == UserManager.GetUserId(User))
         {
-            <div>
-                <p>
-                    @bp.Title
-                </p>
-            </div>
+    <div>
+        <h1 class="display-4">@bp.Title</h1>
+        <small>@bp.DatePosted</small>
+        <div>
+            @if (!string.IsNullOrWhiteSpace(bp.Content))
+            {
+                var lines = bp.Content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var line in lines)
+                {
+                    <p class="lead">@line</p>
+                }
+            }
+        </div>
+    </div>
+            <br />
         }
   }
 </div>
