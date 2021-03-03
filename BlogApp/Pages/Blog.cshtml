@@ -1,6 +1,7 @@
 ﻿@page
 @using Microsoft.AspNetCore.Identity
 @using BlogApp.Models
+@using System.Web 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @model BlogApp.Pages.BlogModel
@@ -9,9 +10,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            @foreach (var u in Model.IdentityUser)
+            {
             @foreach (var bp in Model.BlogPost)
             {
-                @if (bp.AuthorFK == UserManager.GetUserId(User))
+                @if (u.UserName == Model.id && bp.AuthorFK == u.Id)
                 {
                     <div>
                         <h1 class="display-4">@bp.Title</h1>
@@ -30,9 +33,11 @@
                     <br />
                 }
             }
+            }
         </div>
         <div class="col-md-4">
             <p class="lead">@User.Identity.Name</p>
+            <p class="lead">@Model.id</p>
         </div>
     </div>
 </div>

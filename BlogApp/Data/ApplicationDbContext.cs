@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BlogApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BlogApp.Data
 {
@@ -15,5 +16,6 @@ namespace BlogApp.Data
         }
         public DbSet<BlogApp.Models.BlogPost> BlogPost { get; set; }
         public DbSet<BlogApp.Models.BlogAppUser> BlogAppUser { get; set; }
+        public DbSet<IdentityUser>  IdentityUser { get; set; }
     }
 }
